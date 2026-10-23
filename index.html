@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CareerSync | Smart Internship Matching</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-mark">C</span> CareerSync</a>
+    <span class="top-note">Smart Internship Recommendation System</span>
+  </header>
+
+  <main class="layout">
+    <section class="hero">
+      <div class="eyebrow"><span class="dot"></span> CAREER MATCHING, MADE SMARTER</div>
+      <h1>Find internships<br><span>that fit your future.</span></h1>
+      <p>Tell us about your skills and goals. CareerSync ranks internships by semantic relevance, skill overlap, branch eligibility, and preferences.</p>
+      <div class="hero-points">
+        <span>✓ Personalized matches</span><span>✓ Skill-gap insights</span><span>✓ Clear match scores</span>
+      </div>
+      <div class="mini-stat"><strong>AI-assisted</strong><span>Recommendations based on your profile</span></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-heading">
+        <div><div class="section-kicker">GET STARTED</div><h2>Build your student profile</h2></div>
+        <span class="step-tag">STEP 01</span>
+      </div>
+      <form id="profile-form">
+        <div class="form-grid">
+          <label>Full name<input name="name" required placeholder="e.g. Nikki"></label>
+          <label>Email address<input name="email" type="email" required placeholder="you@example.com"></label>
+          <label>Branch
+            <select name="branch" required>
+              <option value="">Select branch</option><option>ECE</option><option>EEE</option><option>CSE</option><option>IT</option><option>EIE</option><option>Mechanical</option><option>Civil</option><option>Other</option>
+            </select>
+          </label>
+          <label>Academic year
+            <select name="study_year" required>
+              <option value="">Select year</option><option>1st year</option><option>2nd year</option><option>3rd year</option><option>4th year</option><option>Graduate</option>
+            </select>
+          </label>
+          <label class="full">Skills <span class="label-hint">Separate with commas</span><input name="skills" placeholder="Embedded C, Arduino, ESP32, Python"></label>
+          <label class="full">Interests and career goals<textarea name="interests" rows="3" placeholder="Describe the work you want to do, technologies you enjoy, and what you want to learn."></textarea></label>
+          <label>Preferred location
+            <select name="preferred_location"><option>Any</option><option>Remote</option><option>Bengaluru</option><option>Hyderabad</option><option>Chennai</option><option>Tirupati</option></select>
+          </label>
+          <label>Work mode
+            <select name="work_mode"><option>Any</option><option>Remote</option><option>Hybrid</option><option>On-site</option></select>
+          </label>
+        </div>
+        <button id="submit-button" type="submit">Find my matches <span>→</span></button>
+        <p class="privacy-note">Prototype mode: your profile is stored in the local SQLite database on this computer.</p>
+      </form>
+      <div id="status" role="status" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <section class="results-section" id="results-section" hidden>
+    <div class="results-heading"><div><div class="section-kicker">YOUR RESULTS</div><h2>Recommended internships</h2><p id="result-summary"></p></div><span class="results-count" id="results-count"></span></div>
+    <div id="recommendations" class="cards"></div>
+  </section>
+  <footer>CareerSync <span>·</span> Smart Internship Recommendation System <span>·</span> Student project prototype</footer>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
